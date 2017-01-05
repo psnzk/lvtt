@@ -4,7 +4,6 @@ function get_adv($type, $id)
 {
 	$sql = 'select ap.ad_width,ap.ad_height,ad.ad_name,ad.ad_code,ad.ad_link,ad.media_type from ' . $GLOBALS['ecs']->table('ad_position') . ' as ap left join ' . $GLOBALS['ecs']->table('ad') . ' as ad on ad.position_id = ap.position_id where ad.ad_name=\'' . $type . '_' . $id . '\' and (ad.media_type=0 OR ad.media_type=3) and UNIX_TIMESTAMP()>ad.start_time and UNIX_TIMESTAMP()<ad.end_time and ad.enabled=1';
 	$row = $GLOBALS['db']->getRow($sql);
-
 	if ($row) {
 		if ($row['media_type'] == 0) {
 			$src = ((strpos($row['ad_code'], 'http://') === false) && (strpos($row['ad_code'], 'https://') === false) ? DATA_DIR . '/afficheimg/' . $row['ad_code'] : $row['ad_code']);
@@ -71,7 +70,7 @@ define('PHP_SELF', $php_self);
 require ROOT_PATH . 'includes/Http.class.php';
 require ROOT_PATH . 'includes/cls_pinyin.php';
 require ROOT_PATH . 'includes/inc_constant.php';
-require ROOT_PATH . 'includes/cls_ecshop.php';
+require ROOT_PATH . 'includes/cls_ecshop.php';//
 require ROOT_PATH . 'includes/cls_error.php';
 require ROOT_PATH . 'includes/lib_time.php';
 require ROOT_PATH . 'includes/lib_base.php';
