@@ -90,7 +90,7 @@ if (!file_exists(ROOT_PATH . 'data/install.lock.php') && !defined('NO_CHECK_INST
 	header("Location: ./install/index.php\n");
 	exit();
 }
-
+/* 对用户传入的变量进行转义操作。*/
 if (!get_magic_quotes_gpc()) {
 	if (!empty($_GET)) {
 		$_GET = addslashes_deep($_GET);
@@ -103,14 +103,16 @@ if (!get_magic_quotes_gpc()) {
 	$_COOKIE = addslashes_deep($_COOKIE);
 	$_REQUEST = addslashes_deep($_REQUEST);
 }
-
+/* 创建 ECSHOP 对象 */
 $ecs = new ECS($db_name, $prefix);
 define('DATA_DIR', $ecs->data_dir());
 define('IMAGE_DIR', $ecs->image_dir());
+/* 初始化数据库类 */
 require ROOT_PATH . 'includes/cls_mysql.php';
 $db = new cls_mysql($db_host, $db_user, $db_pass, $db_name);
 $db->set_disable_cache_tables(array($ecs->table('sessions'), $ecs->table('sessions_data'), $ecs->table('cart')));
 $db_host = $db_user = $db_pass = $db_name = NULL;
+/* 创建错误处理对象 */
 $err = new ecs_error('message.dwt');
 $sel_config = get_shop_config_val('open_memcached');
 
@@ -119,9 +121,11 @@ if ($sel_config['open_memcached'] == 1) {
 	require ROOT_PATH . 'data/cache_config.php';
 	$cache = new cls_cache($cache_config);
 }
-
+/* 载入系统参数 */
 $_CFG = load_config();
+
 require ROOT_PATH . 'data/sms_config.php';
+/* 载入语言文件 */
 require ROOT_PATH . 'languages/' . $_CFG['lang'] . '/common.php';
 
 if ($_CFG['shop_closed'] == 1) {
