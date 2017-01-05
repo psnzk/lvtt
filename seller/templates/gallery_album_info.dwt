@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>{include file ='library/seller_html_head.lbi'}</head>
+<body>
+{include file ='library/seller_header.lbi'}
+{include file ='library/url_here.lbi'}
+<div class="ecsc-layout">
+    <div class="site wrapper">
+        {include file ='library/seller_menu_left.lbi'}
+        <div class="ecsc-layout-right">
+            <div class="main-content" id="mainContent">
+				{include file ='library/seller_menu_tab.lbi'}
+                <!--start-->
+                <div class="info_warp">
+                <form method="post" action="gallery_album.php" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+                  <table width="100%" id="general-table" class="table_item" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td  class="label">{$lang.require_field}&nbsp;{$lang.album_mame}：</td>
+                      <td>
+                        <input type="text" name='album_mame' value='{$album_info.album_mame}' class="text" autocomplete="off" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td  class="label">{$lang.album_cover}：</td>
+                      <td>
+                        <input type='file' name='album_cover' size='35' class="file" />
+                      </td>
+                    </tr>
+                    <input type="hidden" name="file_url" value="{$album_info.album_cover}" size="35" class="text" />
+                    <tr>
+                      <td  class="label">{$lang.album_desc}：</td>
+                      <td><textarea class="textarea" name="album_desc" id="role_describe">{$album_info.album_desc}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td  class="label">{$lang.sort_order}：</td>
+                      <td><input type="text" name="sort_order" value="{if $album_info.sort_order}{$album_info.sort_order}{else}50{/if}" size="35" class="text" /></td>
+                    </tr>
+                    <tr class="no-line">
+                       <td class="label">&nbsp;</td>
+                       <td class="pt20 pb20">
+                        <input type="submit" value="{$lang.button_submit}" class="button fl" />
+                        <input type="reset" value="{$lang.button_reset}" class="button button_reset fl" />
+                        <input type="hidden" name="act" value="{$form_action}" />
+                        <input type="hidden" name="id" value="{$album_info.album_id}" />
+                      </td>
+                    </tr>
+                 </table>
+                </form>
+                </div>					
+                <!--end-->
+            </div>
+        </div>
+    </div>
+</div>
+{include file ='library/seller_footer.lbi'}
+<script type="text/javascript">
+	
+	/**
+	* 检查表单输入的数据
+	*/
+	function validate()
+	{
+		validator = new Validator("theForm");
+		validator.required("album_mame",     album_mame_null);
+		return validator.passed();
+	}
+
+	onload = function()
+	{
+		startCheckOrder();
+	}
+  
+</script>
+</body>
+</html>

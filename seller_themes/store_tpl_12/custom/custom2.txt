@@ -1,0 +1,63 @@
+<div class="w1100"><img src="themes/ecmoban_dsc/store_tpl_12/images/f4b1.jpg" alt=""></div>
+	<div class="w1100 f4">
+		<div class="red-box">
+			<ul class="clearfix">
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g1.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g2.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g3.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g4.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g5.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g6.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g7.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+				<li>
+					<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f4g8.jpg" alt=""></a>
+					<div class="des">
+						<p>80%的保暖白鸭绒</p>
+						<p><span>亲民适用所有体型宽大版</span></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>

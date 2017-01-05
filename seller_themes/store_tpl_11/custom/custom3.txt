@@ -1,0 +1,22 @@
+<div class="layout-area no-margin">
+	<div class="w-990">
+		<a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3_1.jpg" alt=""></a>
+		<a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3_2.jpg" alt=""></a>
+		<div class="f3-goods fn-clear">
+			<ul>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g1.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g2.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g3.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g4.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g5.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g6.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g7.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g8.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g9.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g10.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g11.jpg" alt=""></a></li>
+				<li><a href=""><img src="themes/ecmoban_dsc/store_tpl_11/images/f3g12.jpg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

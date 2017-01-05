@@ -1,0 +1,716 @@
+{if $temp eq 'shop_banner'}
+<div class="tishi">
+	<p class="first">注意：1、弹出框鼠标移到头部可以拖动，以防笔记本小屏幕内容展示不全;</p>
+</div>
+<div class="tab">
+	<ul class="clearfix">
+    	<li class="current">内容设置</li>
+        <li>显示设置</li>
+    </ul>
+</div>
+<div class="modal-body">
+    <div class="body_info" id="banner_info">
+        <table id="addpictable" class="table">
+            <thead>
+                <tr>
+                    <th>图片</th>
+                    <th>图片链接</th>
+                    <th class="center">排序</th>
+                    {if $mode eq 'lunbo'}
+                    <th class="center">背景颜色</th>
+                    {/if}
+                    <th class="center">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$banner_list item=item key=k}
+                    <tr>
+                        <td>
+                        	<div class="img">
+                            	<span><img src="../{$item.pic_src}"></span>
+                                <input type="hidden" name="pic_src[]" value="{$item.pic_src}"/>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="link[]" value="{$item.link}" class="form-control">
+                        </td>
+                        <td class="center">
+                            <input type="text" value="{$item.sort}" name="sort[]" class="form-control small">
+                        </td>
+                        {if $mode eq 'lunbo'}
+                        <td class="center">
+                            <input type="text" value="" name="bg_color[]" class="form-control small">
+                        </td>
+                        {/if}
+                        <td class="center">
+                            <a href="javascript:;" class="pic_del del">删除</a>
+                        </td>
+                    </tr>
+                {foreachelse}
+                	<tr class="notic">
+                    	<td colspan="5">点击下列图片空间图片可添加图片或点击上传图片按钮上传新图片</td>
+                    </tr>    
+                {/foreach}
+            </tbody>
+        </table>
+        <div class="images_space">
+            <div class="goods_gallery mt20">
+            <form  action="" id="gallery_pic" method="post"  enctype="multipart/form-data"  runat="server" >
+                <div class="nav clearfix">
+                    <div class="f_l">
+                        <select class="form-control album_list_check" name="album_id" onChange="changedpic()">
+                            <option value="0" >请选择相册</option>
+                            {foreach from=$album_list item=list key=k}
+                            <option value="{$list.album_id}" >{$list.album_mame}</option>
+                            {/foreach}
+                        </select>
+                        <select class="form-control ml5" name="sort_name" onChange="changedpic()">
+                            <option value="1">按上传时间从早到晚</option>
+                            <option value="2">按上传时间从晚到早</option>
+                            <option value="3">按图片从小到大</option>
+                            <option value="4">按图片从大到小</option>
+                            <option value="5">按图片名升序</option>
+                            <option value="6">按图片名降序</option>
+                        </select>
+                    </div>
+                    <div class="f_r"><i class="glyphicon glyphicon-cloud-upload"></i>上传图片<input name="file" type="file"></div>
+                    <div class="f_r mr5 add_album"><i class="glyphicon"></i>添加相册</div>
+                </div>
+            </form>
+                <div class="table_list">
+                    <ul id = "pic_list">
+                        {foreach from=$pic_list item=pic_list}
+                            <li><a href="javascript:;" onclick="addpic('{$pic_list.pic_file}')"><img src="../{$pic_list.pic_file}"><span class="pixel">{$pic_list.pic_spec}</span></a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_info" style="display:none;">
+    	<div class="control_list">
+        	<div class="control_item">
+                <div class="control_text">图片高度：</div>
+                <div class="control_value">
+                	{if $mode eq 'lunbo'}
+                	<input type="text" name="picHeight" value="{if $spec_attr.picHeight}{$spec_attr.picHeight}{else}600{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>请设置在300-600px这个之间</span>
+                    {elseif $mode eq 'advImg1'}
+                    <input type="text" name="picHeight" value="{if $spec_attr.picHeight}{$spec_attr.picHeight}{else}400{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>根据实际需求自行填写高度，默认为400</span>
+                    {elseif $mode eq 'advImg2'}
+                    <input type="text" name="picHeight" value="{if $spec_attr.picHeight}{$spec_attr.picHeight}{else}650{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>根据实际需求自行填写高度，默认为650</span>
+                    {elseif $mode eq 'advImg3'}
+                    <input type="text" name="picHeight" value="{if $spec_attr.picHeight}{$spec_attr.picHeight}{else}380{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>根据实际需求自行填写高度，默认为380</span>
+                    {elseif $mode eq 'advImg4'}
+                    <input type="text" name="picHeight" value="{if $spec_attr.picHeight}{$spec_attr.picHeight}{else}250{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>根据实际需求自行填写高度，默认为250</span>
+                	{/if}
+                </div>
+            </div>
+            {if $mode eq 'lunbo'}
+            <div class="control_item">
+                <div class="control_text">切换效果：</div>
+                <div class="control_value">
+                	<label><input type="radio" name="slide_type" value="shade" class="checkbox" {if $spec_attr.slide_type eq 'shade'}checked{/if} ><span>渐变</span></label>
+                    <label><input type="radio" name="slide_type" value="roll" class="checkbox" {if $spec_attr.slide_type eq 'roll'}checked{/if}><span>滚动</span></label>
+                </div>
+            </div>
+            {/if}
+            {if $mode eq 'advImg1'}
+            <div class="control_item">
+           		<div class="control_text">是否轮播切换：</div>
+                <div class="control_value">
+                	<label><input type="radio" name="slide_type" value="yesSlide" class="checkbox" {if $spec_attr.slide_type eq 'yesSlide'}checked{/if}><span>是</span></label>
+                    <label><input type="radio" name="slide_type" value="noSlide" class="checkbox" {if $spec_attr.slide_type eq 'noSlide'}checked{/if}><span>否</span></label>
+                </div>
+            </div>    
+            {/if}
+            {if $mode eq 'advImg4'}
+            <div class="control_item">
+                <div class="control_text">展示方式：</div>
+                <div class="control_value">
+                	<div class="itemsLayout line-item3" data-line="row3">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'row3'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">展示3个广告位<br>（建议尺寸394*394）</div>
+                    </div>
+                    <div class="itemsLayout line-item4" data-line="row4">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'row4'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">展示4个广告位<br>（建议尺寸292*350）</div>
+                    </div>
+                    <div class="itemsLayout line-item5" data-line="row5">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'row5'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">展示5个广告位<br>（建议尺寸232*337）</div>
+                    </div>
+                    <div class="itemsLayout line-item6" data-line="row6">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'row6' || $spec_attr.itemsLayout eq ''}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">展示6个广告位<br>（建议尺寸190*250）</div>
+                    </div>
+                </div>
+            </div>
+            <input name="itemsLayout" type="hidden" value="{if $spec_attr.itemsLayout}{$spec_attr.itemsLayout}{else}row6{/if}"/>
+            {/if}
+            {if $mode eq 'advImg3'}
+            <div class="control_item">
+                <div class="control_text">展示方式：</div>
+                <div class="control_value">
+                	<div class="itemsLayout line-item-left-right" data-line="left-right">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'left-right' || $spec_attr.itemsLayout eq ''}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">左小图右大图</div>
+                    </div>
+                    <div class="itemsLayout line-item-right-left" data-line="right-left">
+                    	<div class="itemsLayoutShot {if $spec_attr.itemsLayout eq 'right-left'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">左大图右小图</div>
+                    </div>
+                </div>
+            </div>
+            <input name="itemsLayout" type="hidden" value="{if $spec_attr.itemsLayout}{$spec_attr.itemsLayout}{else}left-right{/if}"/>
+            {/if}
+            <div class="control_item">
+                <div class="control_text">是否新窗口打开：</div>
+                <div class="control_value">
+                	<label><input type="radio" name="target" value="_blank" class="checkbox" {if $spec_attr.target eq '_blank'}checked{/if}><span>是</span></label>
+                    <label><input type="radio" name="target" value="_self" class="checkbox" {if $spec_attr.target eq '_self'}checked{/if}><span>否</span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+<script type="text/javascript">
+	$("input[name='file']").change(function(){
+		var album_id = $("select[name='album_id']").val();
+		if(album_id > 0){
+			var actionUrl = "gallery_album.php?act=upload_pic";
+			$("#gallery_pic").ajaxSubmit({
+				type: "POST",
+				dataType: "json",
+				url: actionUrl,
+				data: { "action": "TemporaryImage" },
+				success: function (data) {
+						if (data.error == "1") {
+							alert(data.massege);
+						}else{
+							changedpic();
+						}
+				},
+				async: true
+			});
+		}else{
+			alert("请选择相册");
+		}
+	});
+	function changedpic(val){
+                var album_id = 0;
+                if(val > 0){
+                    album_id = val;
+                }else{
+                    album_id = $("select[name='album_id']").val();
+                }
+		var sort_name = $("select[name='sort_name']").val();
+                
+		Ajax.call('get_ajax_content.php?is_ajax=1&act=get_albun_pic', "sort_name="+sort_name+"&album_id="+album_id, changedpicResponse , 'POST', 'JSON');
+	}
+	function changedpicResponse(data){
+		$("#pic_list").html(data);
+	}   
+	function addpic(src){
+		var i = 0;
+		var mode = "{$mode}";
+		var length = "{$pic_number}";
+		$("#addpictable").find('tr').each(function(){
+			i++
+		});
+		
+		if($("#addpictable").find('tr.notic').length>0){
+			i-=1;
+		}
+
+		if( length< i  && length != 0){
+			alert("此模块最多可添加"+length+"个图片");
+		}else{
+			if(mode != "lunbo"){
+				var html = '<tr><td><div class="img"><span><img src="../'+src+'"></span><input type="hidden" name="pic_src[]" value="'+src+'"/></div></td><td><input type="text" name="link[]" class="form-control"></td><td class="center"><input type="text" value="1" name="sort[]" class="form-control small"></td><td class="center"><a href="javascript:;" class="pic_del del">删除</a></td></tr>';
+			}else{
+				var html = '<tr><td><div class="img"><span><img src="../'+src+'"></span><input type="hidden" name="pic_src[]" value="'+src+'"/></div></td><td><input type="text" name="link[]" class="form-control"></td><td class="center"><input type="text" value="1" name="sort[]" class="form-control small"></td><td class="center"><input type="text" value="" name="bg_color[]" class="form-control small"></td><td class="center"><a href="javascript:;" class="pic_del del">删除</a></td></tr>';
+			}
+			if($("#addpictable").find(".notic").length>0){
+				$("#addpictable").find(".notic").remove();
+			}
+			$("#addpictable").find("tbody").append(html);
+		}
+	}
+        //添加相册
+    $(document).on("click",".add_album",function(){
+        Ajax.call('dialog.php?is_ajax=1&act=add_albun_pic', '', add_albumResponse , 'POST', 'JSON');
+    })
+    function add_albumResponse(data){
+        $("#pic_list").html(data.content);
+    }
+    function albun_submit(){
+        var album_mame = $("#add_albun_pic").find("input[name='album_mame']").val();
+        if(album_mame){
+            var actionUrl = "get_ajax_content.php?act=add_albun_pic";
+            $("#add_albun_pic").ajaxSubmit({
+                    type: "POST",
+                    dataType: "json",
+                    url: actionUrl,
+                    data: { "action": "TemporaryImage" },
+                    success: function (data) {
+                                    if (data.error == "0") {
+                                            alert(data.content);
+                                    }else{
+                                        $(".album_list_check").html(data.content)
+                                            changedpic(data.pic_id);
+                                    }
+                    },
+                    async: true
+            });
+        }else{
+            alert("相册名称必填");
+        }
+        
+    }
+</script>
+{/if}
+{if $temp eq 'goods_info'}
+<div class="tishi">
+	<p class="first">注意：1、弹出框鼠标移到头部可以拖动，以防笔记本小屏幕内容展示不全;</p>
+</div>
+<div class="tab">
+	<ul class="clearfix">
+    	<li class="current">内容设置</li>
+        <li>显示设置</li>
+    </ul>
+</div>
+
+<div class="modal-body">
+	<div class="body_info floor_info">
+        <div class="search">
+            <div class="select_box">
+                {if $select_category_html}{$select_category_html}{/if}
+                <input type="hidden" name="cat_id" id="cat_id" value="{$parent_and_rank|default:0}"/>
+            </div>
+            <!--<div class="select_box">
+                <select name="brand_id"  class="select">
+                    <option value="0">请选择品牌</option>
+                    {html_options options=$brand_list selected=$goods.brand_id}
+                </select>
+            </div>-->
+            
+            <div class="search_con"><input width="20" name="keyword_brand" type="text" id="keyword_brand" class="text text_6"></div>
+            <button type="button" class="btn" ectype='changedgoods'>确定</button>
+            <label class="is_selected"><input type="checkbox" name="is_selected" onclick="checkd_selected()"/>已选择商品</label>
+        </div>
+        <div class="table_list mt10">
+            <ul class="clearfix" id="goods_list">
+               {foreach from=$goods_list item=goods}
+                <li class="on">
+                    <div class="img"><img src="../{$goods.goods_thumb}" width="50" height="50"></div>
+                    <div class="text">
+                        <p class="name">{$goods.goods_name}</p>
+                        <p class="price">{$goods.shop_price}</p>
+                    </div>
+                    <div class="choose"><a href="javascript:;" class="on" onclick="selected_goods(this,'{$goods.goods_id}')"><i class="icon icon-ok"></i>已选择</a></div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    <div class="body_info floor_info" style="display:none;">
+        <div class="control_list">
+        	<div class="control_item">
+                <div class="control_text">是否显示标题：</div>
+                <div class="control_value">
+                	<label><input type="radio" name="is_title" value="1" class="checkbox" {if $arr.is_title eq 1} checked {/if}><span>是</span></label>
+                    <label><input type="radio" name="is_title" value="0" class="checkbox" {if $arr.is_title eq 0} checked {/if}><span>否</span></label>
+                </div>
+            </div>
+            <div class="tit_head"{if $arr.is_title eq 0} style="display:none;"{/if}>
+                <div class="control_item">
+                    <div class="control_text">楼层名称：</div>
+                    <div class="control_value"><input name="cat_name" type="text" class="text text2" size="25" value="{$arr.cat_name}"></div>
+                </div>
+                <div class="control_item">
+                    <div class="control_text">楼层描述：</div>
+                    <div class="control_value"><input name="cat_desc" type="text" class="text" size="25" value="{$arr.cat_desc}"></div>
+                </div>
+                <div class="control_item">
+                    <div class="control_text">文字显示：</div>
+                    <div class="control_value">
+                        <select class="select" name="align">
+                            <option value="left" {if $arr.align eq 'left'}checked {/if}>居左</option>
+                            <option value="center" {if $arr.align eq 'center'}checked {/if}>居中</option>
+                            <option value="regiht" {if $arr.align eq 'regiht'}checked {/if}>居右</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">展示方式：</div>
+                <div class="control_value">
+                	<div class="itemsLayout line-item3" data-line="row3">
+                    	<div class="itemsLayoutShot {if $arr.itemsLayout eq 'row3'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">一行展示3个商品</div>
+                    </div>
+                    <div class="itemsLayout line-item4" data-line="row4">
+                    	<div class="itemsLayoutShot {if $arr.itemsLayout eq 'row4'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">一行展示4个商品</div>
+                    </div>
+                    <div class="itemsLayout line-item5" data-line="row5">
+                    	<div class="itemsLayoutShot {if $arr.itemsLayout eq 'row5'}dtselected{/if}"><a href="javascript:void(0);"><span></span></a></div>
+                        <div class="dd">一行展示5个商品</div>
+                    </div>
+                </div>
+            </div>
+            <input name="itemsLayout" type="hidden" value="{$arr.itemsLayout}"/>
+        </div>    
+    </div>
+</div>
+<input type="hidden" name="goods_ids" value="{$arr.goods_ids}"/>
+<script language="JavaScript">
+    function checkd_selected(){
+        var is_selected =$("input[name='is_selected']").is(':checked');
+        if(is_selected == true){
+            $(".icon-ok").parents('li').show();
+			$(".icon-plus").parents('li').hide();
+        }else{
+            $(".icon-ok,.icon-plus").parents('li').show();
+        }
+    }
+    $(document).on("click","button[ectype='changedgoods']",function(){
+        var cat_id = $("input[name='cat_id']").val();
+        var brand_id = $("select[name='brand_id']").val();
+        var keyword = $("input[name='keyword_brand']").val();
+        var goods_ids = $("input[name='goods_ids']").val();
+        var type = 1;
+		
+		$("#goods_list").html('<i class="icon-spinner icon-spin"></i>');
+		
+        Ajax.call('get_ajax_content.php?is_ajax=1&act=changedgoods', "cat_id="+cat_id+"&brand_id="+brand_id+"&keyword="+keyword+"&goods_ids="+goods_ids+"&type="+type, changedgoodsResponse , 'POST', 'JSON');
+    })
+    function changedgoodsResponse(data){
+        $("#goods_list").html(data.content);
+    }
+
+	//选中商品
+	function selected_goods(obj,goods_id){
+		var obj = $(obj);
+		var arr = '';
+		var goods_ids = $("input[name='goods_ids']").val();
+	   
+		if(obj.hasClass("on")){
+			obj.removeClass("on");
+			obj.html('<i class="icon icon-plus"></i>选择');
+			arr = goods_ids.split(',');
+			for(var i =0;i<arr.length;i++){
+				if(arr[i] == goods_id){
+					 arr.splice(i,1);
+				}
+			}
+		}else{
+			$(obj).addClass('on');
+			$(obj).html('<i class="icon icon-ok"></i>已选择');
+			if(goods_ids){
+					arr = goods_ids + ','+goods_id;
+			}else{
+					arr = goods_id;
+			}
+		}
+		$("input[name='goods_ids']").val(arr);
+	}
+	
+	$("input[name='is_title']").on("click",function(){
+		var val = $(this).val();
+		if(val == 1){
+			$(this).parents(".control_list").find(".tit_head").show();
+		}else{
+			$(this).parents(".control_list").find(".tit_head").hide();
+		}
+	});
+</script>
+{/if}
+
+{if $temp eq 'header'}
+<div class="tishi">
+	<p class="first">注意：1、弹出框鼠标移到头部可以拖动，以防笔记本小屏幕内容展示不全;</p>
+    <p>2、自定义编辑器里面的编辑模板，样式可以写在编辑器里面;</p>
+</div>
+<div class="tab">
+	<ul class="clearfix">
+    	<li class="current">内容设置</li>
+    </ul>
+</div>
+<div class="modal-body">
+	<div class="control_list">
+        <div class="control_item">
+            <div class="control_text">设置类型：</div>
+            <div class="control_value">
+            	<label><input type="radio" name="header_type" value="defalt_type" class="checkbox" {if $content.header_type eq 'defalt_type'}checked{/if}><span>默认类型</span></label>
+                <label><input type="radio" name="header_type" value="custom_type" class="checkbox" {if $content.header_type eq 'custom_type'}checked{/if}><span>自定义类型</span></label>
+            </div>
+        </div>
+        <div class="defalt_type" {if $content.header_type neq 'defalt_type'}style="display:none;"{/if}>
+            <div class="control_item">
+                <div class="control_text">头部图片：</div>
+                <form  action="" id="fileForm" method="post"  enctype="multipart/form-data"  runat="server" >
+                    <div class="control_value relative">
+                        <a href="javascript:void(0);" class="uploader-button">
+                        	<span class="btn-text">选择文件</span>
+                        	<div class="file-input-wrapper"><input type="file" name="headerFile" value="上传图片" id="headerFile"  class="file-header-img"></div>
+                        </a>
+                        <div class="preview-box"><input name="fileimg" type="hidden" value="{if $content.headerbg_img}{$content.headerbg_img}{else}../data/gallery_album/ksh_bg.jpg{/if}"/><img id="headerbg_img" src="{if $content.headerbg_img}{$content.headerbg_img}{else}../data/gallery_album/ksh_bg.jpg{/if}" height="86"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="custom_type" {if $content.header_type eq 'defalt_type'}style="display:none;"{/if}>
+        	<div class="control_item">
+                <div class="control_text">自定义内容：</div>
+                <div class="control_value over">
+                    {$FCKeditor}
+                </div>
+            </div>
+        </div>
+        <div class="control_item">
+            <div class="control_text">高度：</div>
+            <div class="control_value"><input type="text" name="picHeight" value="{if $content.picHeight}{$content.picHeight}{else}128{/if}" class="shop_text" autocomplete="off" /><span>px</span><span>请设置在120-150px这个之间</span></div>
+        </div>
+	</div>        
+</div>
+<script type="text/javascript">
+	$.upload_file("input[name='headerFile']","visual_editing.php?act=header_bg&name=headerFile","#headerbg_img");
+	
+	$(document).on("click","input[name='header_type']",function(){
+		if($(this).val() == "defalt_type"){
+			$(".defalt_type").show().siblings(".custom_type").hide();
+		}else{
+			$(".custom_type").show().siblings(".defalt_type").hide();
+		}
+	});
+</script>
+{/if}
+
+{if $temp eq 'navigator'}
+<div class="tishi">
+	<p class="first">注意：1、弹出框鼠标移到头部可以拖动，以防笔记本小屏幕内容展示不全;&nbsp;&nbsp;&nbsp;&nbsp;2、切换是否显示，点击对应的小图标即可完成切换</p>
+</div>
+<div class="tab">
+	<ul class="clearfix">
+    	<li class="current">内容设置</li>
+        <li>显示设置</li>
+    </ul>
+</div>
+<div class="modal-body">
+	<div class="body_info">
+    	<div class="ov_list">
+    	<table class="table" data-table="navtable">
+        	<thead>
+                <tr>
+                    <th width="30%">分类名称</th>
+                    <th width="25%">链接地址</th>
+                    <th width="15%" class="center">排序</th>
+                    <th width="20%" class="center">是否显示</th>
+                    <th width="15%" class="center">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$navigator item=navigator}
+            	<tr >
+                	<td><input type="text" onchange = "edit_nav(this.value ,'{$navigator.id}','edit_navname')" value="{$navigator.name}"></td>
+                    <td><input type="text" onchange = "edit_nav(this.value ,'{$navigator.id}','edit_navurl')" value="{$navigator.url}"></td>
+                    <td class="center"><input type="text" onchange = "edit_nav(this.value ,'{$navigator.id}','edit_navvieworder')" class="small" value="{$navigator.vieworder}"></td>
+                    <td class="center" id="nav_{$navigator.id}"><img onclick = "edit_nav('{$navigator.ifshow}' ,'{$navigator.id}','edit_ifshow','1')" src="{if $navigator.ifshow eq 1}images/yes.gif{else}images/no.gif{/if}"/></td>
+                    <td class="center"><a href="javascript:void(0);" onclick="remove_nav('{$navigator.id}')" class="pic_del del">删除</a></td>
+                </tr>
+                {foreachelse}
+                <tr class="notic">
+                    <td colspan="4">当前没有自定义商品分类，点击下面添加新分类添加</td>
+                </tr>
+            	{/foreach}
+            </tbody>
+        </table>
+        </div>
+        <div class="addCatagory">
+        	<select class="select" id="catagory_type">
+                <option value="0">请选择</option>
+                <option value="1">自定义分类</option>
+                <option value="2">系统分类</option>
+            </select>
+            <input type="text" name="custom_catagory" class="text" style="display:none;" />
+            <select class="select" id="sys_catagory" style="display:none;">
+                {foreach from=$sysmain item=val key=key}
+                    <option value='{$key}|{$val.cat_id}|{$val.cat_name}|{$val.url}' id="" url="{$val.url}">{$val.cat_name}</option>
+                {/foreach}
+            </select>
+            <a href="javascript:void(0);" class="btn btn_disabled">添加新分类</a>
+        </div>
+    </div>
+    <div class="body_info" style="display:none;">
+    	<div class="control_list">
+            <div class="control_item">
+                <div class="control_text">导航栏背景色：</div>
+                <div class="control_value">
+                    <input type="text" name="navColor" class="navColor" value="{if $attr.navColor}{$attr.navColor}{else}#000{/if}">
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">是否新窗口打开：</div>
+                <div class="control_value">
+                	<label><input type="radio" name="target" value="_blank" class="checkbox" {if $attr.target eq '_blank'} checked{/if}><span>是</span></label>
+                    <label><input type="radio" name="target" value="_self" class="checkbox" {if $attr.target eq '_self'} checked{/if}><span>否</span></label>
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">文字显示：</div>
+                <div class="control_value">
+                	<select class="select" name="align">
+                        <option value="left" {if $attr.align eq 'left'}selected="selected" {/if}>居左</option>
+                        <option value="center" {if $attr.align eq 'center'}selected="selected" {/if}>居中</option>
+                        <option value="regiht" {if $attr.align eq 'regiht'}selected="selected" {/if}>居右</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	var navColor = $(".navColor").val();
+	$(".navColor").spectrum({
+		showInitial: true,
+		showPalette: true,
+		showSelectionPalette: true,
+		showInput: true,
+		color: navColor,
+		showSelectionPalette: true,
+		maxPaletteSize: 10,
+		preferredFormat: "hex",
+		palette: [
+			["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
+			"rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
+			["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)",
+			"rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"], 
+			["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)", 
+			"rgb(208, 224, 227)", "rgb(201, 218, 248)", "rgb(207, 226, 243)", "rgb(217, 210, 233)", "rgb(234, 209, 220)", 
+			"rgb(221, 126, 107)", "rgb(234, 153, 153)", "rgb(249, 203, 156)", "rgb(255, 229, 153)", "rgb(182, 215, 168)", 
+			"rgb(162, 196, 201)", "rgb(164, 194, 244)", "rgb(159, 197, 232)", "rgb(180, 167, 214)", "rgb(213, 166, 189)", 
+			"rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)", 
+			"rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)",
+			"rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)",
+			"rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)",
+			"rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)", 
+			"rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
+		]
+	});
+	$(".sp-choose").click(function(){
+		var val = $(this).parents(".sp-picker-container").find(".sp-input").val();
+		$(".navColor").val(val);
+	});
+        function edit_nav(val,id,act,type){
+            if(id > 0){
+                if(type == 0){
+                    Ajax.call('get_ajax_content.php?is_ajax=1&act='+act, "val=" +encodeURIComponent(val) + "&id=" + id , edit_navnameResponse, 'POST', 'JSON');
+                }else{
+                    Ajax.call('get_ajax_content.php?is_ajax=1&act='+act, "val=" +encodeURIComponent(val) + "&id=" + id , edit_ifshowResponse, 'POST', 'JSON');
+                }
+                
+            }else{
+                alert("导航不存在");
+            }
+        }
+
+        function edit_navnameResponse(data){
+            if(data.error == 0){
+                alert(data.content);
+            }
+        }
+        function edit_ifshowResponse(data){
+            var obj = $("#nav_"+data.id);
+            if(data.error == 0){
+                alert(data.content);
+            }else{
+                if(data.content == 0){
+                    obj.html(data.content)
+                }else{
+                    obj.html(data.content)
+                }
+            }
+        }
+        function remove_nav(id){
+            if(id > 0){
+                Ajax.call('get_ajax_content.php?is_ajax=1&act=remove_nav', "id=" + id , remove_navResponse, 'POST', 'JSON');
+            }else{
+                alert("导航不存在");
+            }
+        }
+
+        function remove_navResponse(data){
+            if(data.error == 0){
+                alert(data.content);
+            }
+        }
+</script>
+{/if}
+{if $temp eq 'custom'}
+<div class="tishi">
+	<p class="first">注意：1、弹出框鼠标移到头部可以拖动，以防笔记本小屏幕内容展示不全;</p>
+</div>
+<div class="modal-body">{$FCKeditor}</div>
+{/if}
+{if $temp eq 'template_information'}
+<form  action="visual_editing.php?act=edit_information" id="information" method="post"  enctype="multipart/form-data"  runat="server" >
+<div class="modal-body">
+    <div class="body_info">
+    	<div class="control_list">
+            <div class="control_item">
+                <div class="control_text">模板名称：</div>
+                <div class="control_value">
+                	<input type="text" class="text" name="name"  value="{$template.name|escape}"  autocomplete="off" />
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">版本：</div>
+                <div class="control_value">
+                	<input type="text" class="text" name="version"  value="{$template.version|escape}"  autocomplete="off" />
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">作者：</div>
+                <div class="control_value">
+                	<input type="text" class="text" name="author"  value="{$template.author|escape}"  autocomplete="off" />
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">作者链接：</div>
+                <div class="control_value">
+                	<input type="text" class="text" name="author_url"  value="{$template.author_url|escape}"  autocomplete="off" />
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">模板封面：</div>
+                <div class="control_value">
+                        <input type="file" class="type-file-file" id="ten_file" name="ten_file" data-state="imgfile" size="30" hidefocus="true" value="" />
+                        {if $template.screenshot}
+                        <img src={$template.screenshot} width="25" height="25"/>
+                        {/if}
+                        <span class="hint" style="color:#1b9ad5;">请上传265*388的图片，防止图片变型</span>
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">模板大图：</div>
+                <div class="control_value">
+                        <input type="file" class="type-file-file" id="big_file" name="big_file" data-state="imgfile" size="30" hidefocus="true" value="" />
+                        {if $template.template}
+                        <img src={$template.template} width="25" height="25"/>
+                        {/if}
+                </div>
+            </div>
+            <div class="control_item">
+                <div class="control_text">描述：</div>
+                <div class="control_value">
+                	<textarea class="textarea" name="description">{$template.desc|escape}</textarea>
+                </div>
+            </div>
+            <input type="hidden" name="tem" value="{$code}" />
+            <input type="hidden" name="id" value="{$ru_id}" />
+        </div>
+    </div>
+</div>
+</form>
+{/if}

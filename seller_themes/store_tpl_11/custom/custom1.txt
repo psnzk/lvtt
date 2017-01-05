@@ -1,0 +1,6 @@
+<div class="layout layout-auto">
+    <div class="full-img w-990 f1">
+        <img src="themes/ecmoban_dsc/store_tpl_11/images/f1.jpg" alt="" class="full-img-mc">
+        <a href=""></a>
+    </div>
+</div>

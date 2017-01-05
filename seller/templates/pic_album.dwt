@@ -1,0 +1,210 @@
+{if $full_page}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>{include file ='library/seller_html_head.lbi'}</head>
+
+<body>
+{include file ='library/seller_header.lbi'}
+{include file ='library/url_here.lbi'}
+<div class="ecsc-layout">
+    <div class="site wrapper">
+		{include file ='library/seller_menu_left.lbi'}
+		<div class="ecsc-layout-right">
+            <div class="main-content" id="mainContent">
+		<div class="tabmenu">
+                    <ul class="tab pngFix">
+                        {foreach from=$tab_menu item=menu}
+                        <li {if $menu.curr}class="active"{/if}><a href="{$menu.href}">{$menu.text}</a></li>
+                        {foreachelse}
+                        <li class="active"><a href="javascript:;">{$ur_here}</a></li>
+                        {/foreach}
+                    </ul>
+                    {if $action_link}
+                    <a class="ecsc-btn ecsc-btn-ecblue"  href="javascript:void(0)" {$action_link.spec} date-id="{$album_id}"><i class="icon-plus-sign"></i>{$action_link.text}</a>
+                    {/if}
+                </div>
+                <form method="post" action="gallery_album.php?act=both" name="listForm">
+                <div class="search-form">
+                        <label>全选</label>
+                        <input type="checkbox" id="all" class="checkall" name="checkboxes[]" onclick="listTable.selectAll(this, &quot;checkboxes&quot;)" style="float:left;margin-top:10px;">
+                        <label>{$lang.all_status}</label>
+                        <select name="type"  class="select" onchange='transfer(this.value)'>
+                          <option value="remove">移除</option>
+                          <option value="transfer">转移相册</option>
+                        </select>
+                        <select name="album_id" class="select" id='album_id' style='display: none'>
+                          <option value="-1">{$lang.select_please}</option>
+                          {foreach from=$album_list item=list}
+                          <option value="{$list.album_id}">{$list.album_mame}</option>
+                          {/foreach}
+                        </select>
+                        <input type="hidden" name="act" value="batch" />
+                                                  <input type="hidden" name="old_album_id" value="{$album_id}" />
+                        <label class="submit-border"><input type="submit" class="submit" value="确定"></label>
+                </div>
+                <!-- start ad position list -->
+                <div class="list-div" id="listDiv">
+				{/if}
+                	<div class="pic-container">
+                    	<div class="pic-items">
+                            {foreach from=$pic_album item=agency}
+                            <div class="item" id="pic_{$agency.pic_id}">
+                                <div class="image">
+                                    <div class="base-msg">
+                                        <div class="img-container"><img src="../{$agency.pic_file}" /></div>
+                                        <input type="checkbox" class="checkitem tc" value="{$agency.pic_id}" name="checkboxes[]" style="left: 1px;position: absolute;top: 1px; z-index: 2;">
+                                        <div class="img-width">{$agency.pic_spec}({$agency.pic_size})</div>
+                                        <div class="img-handle">
+                                            <a href="JavaScript:void(0);" class="btn_see" onclick="album_move('{$agency.pic_id}')"><i class="sc_icon icon-move"></i>转移相册</a>
+                                            <a href="JavaScript:void(0);" class="btn_see" onclick="remove_pic('{$agency.pic_id}')"><i class="sc_icon icon-trash"></i>移除</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="icon icon-remove" onclick="remove_pic('{$agency.pic_id}')"></i>
+                            </div>
+                            {/foreach}
+                        </div>
+                           <!--<div class="search-form">
+                        <label>{$lang.all_status}</label>
+                        <select name="type"  class="select" onchange='transfer(this.value)'>
+                          <option value="-1">{$lang.select_please}</option>
+                          <option value="remove">移除</option>
+                          <option value="transfer">转移相册</option>
+                        </select>
+                        <select name="album_id" class="select" id='album_id' style='display: none'>
+                          <option value="-1">{$lang.select_please}</option>
+                          {foreach from=$album_list item=list}
+                          <option value="{$list.album_id}">{$list.album_mame}</option>
+                          {/foreach}
+                        </select>
+                        <label class="submit-border"><input type="submit" class="submit" value="搜索"></label>
+                    </div>-->
+                        {include file="page.dwt"}
+                    </div>
+				{if $full_page}
+                </div>
+				<!-- end ad_position list -->
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+{insert_scripts files="plupload.full.min.js,spectrum-master/spectrum.js,jquery.purebox.js"}
+{include file="library/seller_footer.lbi"}
+{if $full_page}
+<script type="text/javascript">
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+  listTable.query = 'pic_query';
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+  {literal}
+  onload = function()
+  {
+    startCheckOrder();
+  }
+  
+  /*添加图片*/
+	$(document).on("click","a[ectype='addpic_album']",function(){
+		var album_id ="{$album_id}";
+		$.jqueryAjax('dialog.php', 'is_ajax=1&act=pic_album' + '&id=' + album_id + '&temp=addBatchWarehouse', function(data){
+			var content = data.content;
+			pb({
+				id:"categroy_dialog",
+				title:"上传图片",
+				width:788,
+				content:content,
+				ok_title:"确定",
+				drag:false,
+				foot:false,
+				cl_cBtn:false,
+			});
+			
+		});
+	});
+        function transfer(type){
+            if(type == 'transfer'){
+                $("#album_id").show();
+            }else{
+                $("#album_id").hide();
+            }
+        }
+/*添加图片*/
+$(document).on("click","a[ectype='addpic_album']",function(){
+			var album_id ="{$album_id}";
+			$.jqueryAjax('dialog.php', 'is_ajax=1&act=pic_album' + '&id=' + album_id + '&temp=addBatchWarehouse', function(data){
+				var content = data.content;
+				pb({
+					id:"categroy_dialog",
+					title:"上传图片",
+					width:788,
+					content:content,
+					ok_title:"确定",
+					drag:false,
+					foot:false,
+					cl_cBtn:false,
+				});
+				
+			});
+		});
+        function remove_pic(id){
+            if(confirm("确定删除吗？")){
+                Ajax.call('gallery_album.php', "act=pic_remove&id=" + id, remove_picResponse, 'POST', 'JSON');
+            }
+        }        
+        function remove_picResponse(data){
+            if(data.error == 0){
+                $("#pic_"+data.id).remove();
+            }else{
+                alert(data.content);
+            }
+        }
+
+//鼠标停留出发显示
+$(document).on("mouseover",".image",function(){
+        $(this).find(".img-width").hide();
+        $(this).find(".img-handle").show();
+})
+$(document).on("mouseout",".image",function(){
+        $(this).find(".img-width").show();
+    $(this).find(".img-handle").hide();
+})
+  function album_move(pic_id){
+                        if(pic_id > 0){
+                            Ajax.call('dialog.php', 'act=album_move' + '&pic_id=' + pic_id, album_moveResponse, 'POST', 'JSON');
+                        }else{
+                            alert("请选择转移图片！");
+                        }
+		}
+
+		function album_moveResponse(result){
+			 var content = result.content;
+			pb({
+				id: "album_move",
+				title: "转移相册",
+				width: 600,
+				content: content,
+				ok_title: "确定",
+				drag: true,
+				foot: true,
+				cl_cBtn: false,
+				onOk: function () {
+					var album_id = $("#album_move").find("select[name='album_id']").val();
+                                        if(album_id != result.old_album_id && album_id != 0){
+                                            Ajax.call('get_ajax_content.php', 'act=album_move_back' + '&pic_id=' + result.pic_id + "&album_id=" + album_id, album_move_backResponse, 'POST', 'JSON');
+                                        }
+				}
+			});
+		}
+                function album_move_backResponse(result){
+                    if(result.pic_id > 0){
+                        $("#pic_"+result.pic_id).remove();
+                    }
+                }
+</script>
+{/if}
+</body>
+</html>
+{/if}

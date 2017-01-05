@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+
+<link rel="stylesheet" type="text/css" href="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/base.css" />
+<link href="{$site_domain}{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link href="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/store_css/store_css.css" rel="stylesheet" type="text/css" >
+<link href="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/css/preview.css" rel="stylesheet" type="text/css" >
+
+
+{insert_scripts files='jquery-1.9.1.min.js,jquery.json.js,transport_jquery.js,cart_common.js,cart_quick_links.js'}
+{insert_scripts files='common.js,global.js,utils.js,compare.js,search_category_menu.js,jd_choose.js,pinyin.js,warehouse.js,parabola.js'}
+<script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/sc_common.js"></script>
+<script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/rotate3di.js"></script>
+<script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/scroll_city.js"></script>
+<script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/notLogin.js"></script>
+<script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery.SuperSlide.2.1.1.js"></script>
+<link rel="stylesheet" href="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/purebox.css">
+</head>
+
+<body>
+    <!-- #BeginLibraryItem "/library/page_header_store_tpl.lbi" --><!-- #EndLibraryItem -->
+    <div class="jShopHeader">
+    <div class="jFixWidth">
+        <div class="jShopHeaderArea">
+            <div class="j-shopHeader">
+                <div class="jLogo">
+                    <a href="{$merchants_url}">{$shop_name}</a>
+                </div>
+                <div class="jRating">
+					   <a class="jIconRating" href="#">
+                        <span class="jGray"></span>
+                        <span style="width:{$merch_cmt.cmt.all_zconments.allReview}%;" class="jRed"></span>
+                    </a>
+                    <em>{$merch_cmt.cmt.all_zconments.score} 分</em>
+					
+                    <div class="jRatingTotal">
+						<table cellpadding="0" cellspacing="0" border="0">
+            				<thead>
+            					<tr>
+            						<th><b>评分详细</b></th>
+            						<th></th>
+            						<th>与行业相比</th>
+            					</tr>
+            				</thead>
+            				<tbody id="jRatingTotal_table">
+            					<tr>
+            						<td>商品评分：</td>
+            						<td><span class="jNum">{$merch_cmt.cmt.commentRank.zconments.score} 分</span></td>
+            						<td>
+            						                						<span class="jIconHigh">{$merch_cmt.cmt.commentRank.zconments.goodReview}%</span>
+                					            						</td>
+            					</tr>
+            					<tr>
+            						<td>服务评分：</td>
+            						<td><span class="jNum">{$merch_cmt.cmt.commentServer.zconments.score} 分</span></td>
+            						<td>
+            						                						<span class="jIconHigh">{$merch_cmt.cmt.commentServer.zconments.goodReview}%</span>
+                					                                    </td>
+            					</tr>
+            					<tr>
+            						<td>时效评分：</td>
+            						<td><span class="jNum">{$merch_cmt.cmt.commentDelivery.zconments.score} 分</span></td>
+            						<td>
+            						                						<span class="jIconHigh">{$merch_cmt.cmt.commentDelivery.zconments.goodReview}%</span>
+                					                                    </td>
+            					</tr>
+            				</tbody>
+            			</table>
+						<ul class="shopTolal">
+                             <li>
+                                <span>店铺名称：</span><a href="{$merchants_url}">{$shop_name}</a>
+                            </li>
+                            <li>
+                                <span>公司名称：</span><span>{$basic_info.shop_name}</span><a style="padding:0px;" href="#"><span class="icon"></span></a>
+                            </li>
+                            <li>
+                                <span>客服电话：</span><span>{$basic_info.kf_tel}</span>
+                            </li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+							jQuery(".j-shopHeader").mouseout(function() {
+								jQuery('.jRatingTotal').css('display','none');
+							});
+							
+							jQuery(".j-shopHeader").mouseover(function() {
+								jQuery('.jRatingTotal').css('display','block');
+							});
+						</script>
+            <div class="jAttention" id="shop-attention">
+                <a onclick="get_collect_store(2,{$merchant_id});" href="javascript:void(0);"><span>加关注</span></a>
+            </div>
+			<div id="im" class="im jIm" title="{$shop_info.shop_name}{$shop_info.shopNameSuffix}在线客服">
+                <b>
+                <a href="{if $basic_info.kf_type eq 1}http://www.taobao.com/webww/ww.php?ver=3&touid={$basic_info.kf_ww}&siteid=cntaobao&status=1&charset=utf-8{else}http://wpa.qq.com/msgrd?v=3&uin={$basic_info.kf_qq}&site=qq&menu=yes{/if}">在线客服</a>
+                </b>
+            </div>
+            <div  class="jAttention" title="{$grade_info.grade_introduce}">
+                <b>
+                    <a href="javascript:;" class="seller_grade_img"><img src='{$site_domain}{$grade_info.grade_img}' width="15" style="position:relative; top:4px;"/><i>{$grade_info.grade_name}</i></a>
+                </b>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="pc-wrapper">{$pc_page.out}</div>
+    <input type="hidden" value="{$merchant_id}" id="merchantId" class="merchantId" name="merchantId">  
+    <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+    <script type="text/javascript" src="{$site_domain}themes/<?php echo $GLOBALS['_CFG']['template']; ?>/js/jquery.purebox.js"></script>
+    <script type="text/javascript">
+		if($(".shop_banner").hasClass("shade")){
+    		$(".shop_banner").slide({titCell:".hd ul",mainCell:".bd ul",effect:"fold",autoPlay:true,autoPage:true,interTime:2000,delayTime:500,scroll:1,vis:1});
+		}else{
+			$(".shop_banner").find("li").show();
+			$(".shop_banner").slide({titCell:".hd ul",mainCell:".bd ul",effect:"left",autoPlay:true,autoPage:true,interTime:2000,delayTime:500,scroll:1,vis:1});
+		}
+		
+		if($(".adv_module").hasClass("yesSlide")){
+			$(".adv_module").find("li").show();
+    		$(".adv_module").slide({titCell:".hd ul",mainCell:".bd ul",effect:"left",autoPlay:true,autoPage:true,interTime:3500,delayTime:500,scroll:1,vis:1});
+		} 
+        //$(".all_box").mouseover()
+        $(document).on("mouseover", ".all_box", function () {
+            var all_cats_tcc = $(".all_cats_tcc").html();
+            all_cats_tcc = $.trim(all_cats_tcc);
+
+            if(all_cats_tcc == ''){
+                var merchant_id = $("#merchantId").val();
+				{if $is_jsonp}
+					$.ajax({
+					   type: "GET",
+					   /*jquery Ajax跨域*/
+					   url: "{$site_domain}ajax_dialog.php",
+					   data: "act=cat_store_list&merchant_id=" + merchant_id + "&is_jsonp=" + {$is_jsonp},
+					   dataType:'jsonp',
+					   jsonp:"jsoncallback",
+					   success: function(data){
+						   $(".all_cats_tcc").html(data.content);
+					   }
+					});
+				{else}
+					Ajax.call('ajax_dialog.php?act=cat_store_list', 'merchant_id=' + merchant_id, cat_store_listResponse, 'POST', 'JSON');
+				{/if}
+            }
+        })
+        function cat_store_listResponse(data){
+            $(".all_cats_tcc").html(data.content);
+        }
+    </script>
+</body>
+</html>

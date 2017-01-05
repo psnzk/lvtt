@@ -1,0 +1,165 @@
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `distri' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0'' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0'
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `distri' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`\x0A\x09ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `distric' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress`
+	ADD `street` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` ADD `street` SMALLINT( 5 ) NOT NULL DEFAULT '0' AFTER `district`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `addres' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`;
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` ADD `street1` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` ADD `street1` SMALLINT( 8 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `address`;
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+
+SQL Error:
+ ERROR NO: 1064
+ERROR MSG: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '` \x0A\x09ADD `street` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `district`' at line 1
+
+Query String:
+ ALTER TABLE dsc_user_address ADD ress` 
+	ADD `street` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `district`;
+
+File Path:
+ D:/wamp/phpStudy/WWW/ecmoban_dsc1.6.3_20160831/upgrade/packages/v1.7/structure.sql
+
+
+

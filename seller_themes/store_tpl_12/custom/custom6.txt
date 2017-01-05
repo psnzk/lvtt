@@ -1,0 +1,25 @@
+<div class="w1100"><img src="themes/ecmoban_dsc/store_tpl_12/images/f8b1.jpg" alt=""></div>
+<div class="w1100 f8">
+	<ul class="clearfix">
+		<li>
+			<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f8g1.jpg" alt=""></a>
+			<p><span><img src="themes/ecmoban_dsc/store_tpl_12/images/arrow.jpg" alt=""></span>RMB<strong>499.00</strong></p>
+		</li>
+		<li>
+			<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f8g2.jpg" alt=""></a>
+			<p><span><img src="themes/ecmoban_dsc/store_tpl_12/images/arrow.jpg" alt=""></span>RMB<strong>499.00</strong></p>
+		</li>
+		<li>
+			<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f8g3.jpg" alt=""></a>
+			<p><span><img src="themes/ecmoban_dsc/store_tpl_12/images/arrow.jpg" alt=""></span>RMB<strong>499.00</strong></p>
+		</li>
+		<li>
+			<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f8g4.jpg" alt=""></a>
+			<p><span><img src="themes/ecmoban_dsc/store_tpl_12/images/arrow.jpg" alt=""></span>RMB<strong>499.00</strong></p>
+		</li>
+		<li>
+			<a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f8g5.jpg" alt=""></a>
+			<p><span><img src="themes/ecmoban_dsc/store_tpl_12/images/arrow.jpg" alt=""></span>RMB<strong>499.00</strong></p>
+		</li>
+	</ul>
+</div>

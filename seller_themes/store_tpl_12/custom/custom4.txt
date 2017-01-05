@@ -1,0 +1,91 @@
+<div class="w1100"><img src="themes/ecmoban_dsc/store_tpl_12/images/f6b1.jpg" alt=""></div>
+<div class="w1100 f6">
+    <div class="clearfix mt-20"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6a1.jpg" alt=""></a></div>
+    <div class="clearfix mt-20"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6a2.jpg" alt=""></a></div>
+    <ul class="clearfix">
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g1.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g2.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g3.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g4.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g5.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g6.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g7.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g8.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g9.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g10.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g11.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+        <li>
+            <a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f6g12.jpg" alt=""></a>
+            <div class="priceBox">
+                <div class="pri"><img src="themes/ecmoban_dsc/store_tpl_12/images/xinpinjia.png" alt="">999.9</div>
+                <a href="" class="addBuy"><span>加入购物车</span></a>
+            </div>
+        </li>
+    </ul>
+</div>

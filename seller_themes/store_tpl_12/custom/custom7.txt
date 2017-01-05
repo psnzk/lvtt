@@ -1,0 +1,25 @@
+<div class="w1100">
+    <ul class="f2 clearfix">
+        <li class="fore1"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g1.jpg" alt=""></a></li>
+        <li class="fore2"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g2.jpg" alt=""></a></li>
+        <li class="fore3"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g3.jpg" alt=""></a></li>
+        <li class="fore4"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g4.jpg" alt=""></a></li>
+        <li class="fore5"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g5.jpg" alt=""></a></li>
+        <li class="fore6"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f2g6.jpg" alt=""></a></li>
+    </ul>
+</div>
+<div class="f3-cate">
+    <ul class="clearfix">
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c1.jpg" alt=""><span>呢大衣</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c2.jpg" alt=""><span>针织/毛衣</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c3.jpg" alt=""><span>羽绒/棉服</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c4.jpg" alt=""><span>外套/风衣</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c5.jpg" alt=""><span>连衣裙</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c6.jpg" alt=""><span>T恤</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c7.jpg" alt=""><span>卫衣</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c8.jpg" alt=""><span>半身</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c9.jpg" alt=""><span>休闲/打底裤</span></a></li>
+        <li><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c10.jpg" alt=""><span>牛仔裤</span></a></li>
+        <li style="width:88px;"><a href=""><img src="themes/ecmoban_dsc/store_tpl_12/images/f3c11.jpg" alt=""><span>加绒保暖</span></a></li>
+    </ul>
+</div>
